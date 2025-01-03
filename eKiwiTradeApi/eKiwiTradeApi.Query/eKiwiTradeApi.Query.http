@@ -1,0 +1,6 @@
+@eKiwiTradeApi.Query_HostAddress = http://localhost:5102
+
+GET {{eKiwiTradeApi.Query_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
