@@ -25,7 +25,7 @@ namespace eKiwiTradeApi.Data
             }
         }
 
-        public async Task<List<GroupEntity>> GetGroupLookupByCategoryId(int categoryId)
+        public async Task<List<Group>> GetGroupLookupByCategoryId(int categoryId)
         {
             try
             {
@@ -34,11 +34,11 @@ namespace eKiwiTradeApi.Data
             catch (Exception ex)
             {
                 _logger.LogError("Error in GetGroupLookupByCategoryId: {Message}", ex.Message);
-                return new List<GroupEntity>();
+                return new List<Group>();
             }
         }
 
-        public async Task<List<TypeEntity>> GetTypeLookupByGroupAndCategoryId(int groupId, int categoryId)
+        public async Task<List<Entity.Type>> GetTypeLookupByGroupAndCategoryId(int groupId, int categoryId)
         {
             try
             {
@@ -47,7 +47,7 @@ namespace eKiwiTradeApi.Data
             catch (Exception ex)
             {
                 _logger.LogError("Error in GetTypeLookupByGroupAndCategoryId: {Message}", ex.Message);
-                return new List<TypeEntity>();
+                return new List<Entity.Type>();
             }
         }
 

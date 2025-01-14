@@ -9,8 +9,8 @@ namespace eKiwiTradeApi.Logic.Interface
     public interface ILookupService
     {
         Task<Response<Category>> GetAllCategoryLookup();
-        Task<Response<GroupEntity>> GetGroupLookupByCategoryId(int categoryId);
-        Task<Response<TypeEntity>> GetTypeLookupByGroupAndCategoryId(int groupId, int categoryId);
+        Task<Response<Data.Entity.Group>> GetGroupLookupByCategoryId(int categoryId);
+        Task<Response<Data.Entity.Type>> GetTypeLookupByGroupAndCategoryId(int groupId, int categoryId);
         //Task<Response<string>> GetFieldLookupAsync(int id);
     }
 
