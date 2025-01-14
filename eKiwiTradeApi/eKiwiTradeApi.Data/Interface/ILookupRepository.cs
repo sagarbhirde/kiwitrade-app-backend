@@ -6,9 +6,9 @@ namespace eKiwiTradeApi.Logic.Interface
     {
         Task<List<Category>> GetAllCategoryLookup();
 
-        Task<List<GroupEntity>> GetGroupLookupByCategoryId(int categoryId);
+        Task<List<Group>> GetGroupLookupByCategoryId(int categoryId);
 
-        Task<List<TypeEntity>> GetTypeLookupByGroupAndCategoryId(int groupId, int categoryId);
+        Task<List<Data.Entity.Type>> GetTypeLookupByGroupAndCategoryId(int groupId, int categoryId);
 
        // Task<string> GetFieldLookup(int id);
 

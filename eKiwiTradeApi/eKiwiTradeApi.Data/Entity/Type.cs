@@ -3,21 +3,20 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace eKiwiTradeApi.Data.Entity
 {
-    [Table("Group")]
-    public class GroupEntity
+    [Table("Type")]
+    public class Type
     {
         [Key]
+        [Column("typeid")]
+        public int TypeId { get; set; }
+        
+        [Column("typename")]
+        public required string TypeName { get; set; }
+        
         [Column("groupid")]
         public int GroupId { get; set; }
-
-        [MaxLength(100)]
-        [Column("groupname")]
-        public string GroupName { get; set; }
-
+                
         [Column("categoryid")]
         public int CategoryId { get; set; }
-
-        [ForeignKey("categoryid")]
-        public virtual required Category Category { get; set; }
-    }
+   }
 }

@@ -43,9 +43,9 @@ namespace eKiwiTradeApi.Logic
             return response;
         }
 
-        public async Task<Response<GroupEntity>> GetGroupLookupByCategoryId(int categoryId)
+        public async Task<Response<Group>> GetGroupLookupByCategoryId(int categoryId)
         {
-            var response = new Response<GroupEntity>();
+            var response = new Response<Group>();
             try
             {
                 var lookupResult = await _lookupRepository.GetGroupLookupByCategoryId(categoryId);
@@ -65,9 +65,9 @@ namespace eKiwiTradeApi.Logic
             return response;
         }
 
-        public async Task<Response<TypeEntity>> GetTypeLookupByGroupAndCategoryId(int groupId, int categoryId)
+        public async Task<Response<Data.Entity.Type>> GetTypeLookupByGroupAndCategoryId(int groupId, int categoryId)
         {
-            var response = new Response<TypeEntity>();
+            var response = new Response<Data.Entity.Type>();
             try
             {
                 var lookupResult = await _lookupRepository.GetTypeLookupByGroupAndCategoryId(groupId, categoryId);
