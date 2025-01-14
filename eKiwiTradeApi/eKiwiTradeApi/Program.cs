@@ -23,8 +23,8 @@ builder.Logging.AddConsole(); // Add console logging (optional: add file or othe
 
 
 // Add application services
-builder.Services.AddTransient<IUserService, UserService>();
-builder.Services.AddTransient<IUserRepository, UserRepository>();
+//builder.Services.AddTransient<IUserService, UserService>();
+//builder.Services.AddTransient<IUserRepository, UserRepository>();
 
 // Add controllers
 builder.Services.AddControllers();

@@ -1,10 +1,12 @@
-﻿namespace eKiwiTradeApi.Logic.Interface
+﻿using eKiwiTradeApi.Data.Entity;
+
+namespace eKiwiTradeApi.Logic.Interface
 {
     public interface ILookupRepository
     {
-        Task<string> GetCategoryLookup();
+        Task<List<Category>> GetAllCategoryLookup();
 
-        Task<string> GetFieldLookup(int id);
+       // Task<string> GetFieldLookup(int id);
 
     }
 }

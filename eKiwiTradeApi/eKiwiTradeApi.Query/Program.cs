@@ -1,7 +1,9 @@
 using eKiwiTradeApi.Data;
 using eKiwiTradeApi.Data.DataHelper;
+using eKiwiTradeApi.Data.Entity;
 using eKiwiTradeApi.Logic;
 using eKiwiTradeApi.Logic.Interface;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,7 +15,9 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 // Configure MongoDB settings
-builder.Services.Configure<DbConfiguration>(builder.Configuration.GetSection("MongoDbConnection"));
+//builder.Services.Configure<DbConfiguration>(builder.Configuration.GetSection("MongoDbConnection"));
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
@@ -23,8 +27,8 @@ builder.Logging.AddConsole(); // Add console logging (optional: add file or othe
 
 
 // Add application services
-builder.Services.AddTransient<IUserService, UserService>();
-builder.Services.AddTransient<IUserRepository, UserRepository>();
+//builder.Services.AddTransient<IUserService, UserService>();
+//builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<ILookupService, LookupService>();
 builder.Services.AddTransient<ILookupRepository, LookupRepository>();
 

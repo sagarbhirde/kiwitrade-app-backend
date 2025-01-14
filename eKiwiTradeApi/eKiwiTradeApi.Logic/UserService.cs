@@ -25,12 +25,12 @@ namespace eKiwiTradeApi.Logic
             var response = new Response<List<UserModel>>();
             try
             {
-                var users = await _userRepository.GetAllUserAsync();
-                if (users != null)
-                {
-                    response.Success = true;
-                    response.Data = _mapper.Map<List<UserModel>>(users);
-                }
+                //var users = await _userRepository.GetAllUserAsync();
+                //if (users != null)
+                //{
+                //    response.Success = true;
+                //    response.Data = _mapper.Map<List<UserModel>>(users);
+                //}
                 return response;
             }
             catch (Exception ex)
@@ -47,12 +47,12 @@ namespace eKiwiTradeApi.Logic
             var response = new Response<UserModel>();
             try
             {
-                var result = await _userRepository.GetUserByIdAsync(id);
-                if(result != null)
-                {
-                    response.Success = true;
-                    response.Data = _mapper.Map<UserModel>(result);
-                }
+                //var result = await _userRepository.GetUserByIdAsync(id);
+                //if(result != null)
+                //{
+                //    response.Success = true;
+                //    response.Data = _mapper.Map<UserModel>(result);
+                //}
             }
             catch (Exception ex)
             {
@@ -69,16 +69,16 @@ namespace eKiwiTradeApi.Logic
             try
             {
 
-                var user = _mapper.Map<User>(userModel);
-                if (await _userRepository.CreateUserAsync(user))
-                {
-                    response.Success = true;
-                }
-                else
-                {
-                    response.Success = false;
-                    response.ErrorMessage = string.Empty;
-                }
+                //var user = _mapper.Map<User>(userModel);
+                //if (await _userRepository.CreateUserAsync(user))
+                //{
+                //    response.Success = true;
+                //}
+                //else
+                //{
+                //    response.Success = false;
+                //    response.ErrorMessage = string.Empty;
+                //}
 
             }
             catch (Exception ex)
@@ -97,16 +97,16 @@ namespace eKiwiTradeApi.Logic
             try
             {
 
-                var user = _mapper.Map<User>(userModel);
-                if (await _userRepository.UpdateUserAsync(id, user))
-                {
-                    response.Success = true;
-                }
-                else
-                {
-                    response.Success = false;
-                    response.ErrorMessage = string.Empty;
-                }
+                //var user = _mapper.Map<User>(userModel);
+                //if (await _userRepository.UpdateUserAsync(id, user))
+                //{
+                //    response.Success = true;
+                //}
+                //else
+                //{
+                //    response.Success = false;
+                //    response.ErrorMessage = string.Empty;
+                //}
 
             }
             catch (Exception ex)
