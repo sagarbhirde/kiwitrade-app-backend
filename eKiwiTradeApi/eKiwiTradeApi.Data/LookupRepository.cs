@@ -25,6 +25,32 @@ namespace eKiwiTradeApi.Data
             }
         }
 
+        public async Task<List<GroupEntity>> GetGroupLookupByCategoryId(int categoryId)
+        {
+            try
+            {
+                return await _context.Groups.Where(g => g.CategoryId == categoryId).ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Error in GetGroupLookupByCategoryId: {Message}", ex.Message);
+                return new List<GroupEntity>();
+            }
+        }
+
+        public async Task<List<TypeEntity>> GetTypeLookupByGroupAndCategoryId(int groupId, int categoryId)
+        {
+            try
+            {
+                return await _context.Types.Where(t => t.GroupId == groupId && t.CategoryId == categoryId).ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Error in GetTypeLookupByGroupAndCategoryId: {Message}", ex.Message);
+                return new List<TypeEntity>();
+            }
+        }
+
 
 
         //public async Task<string> GetFieldLookup(int id)

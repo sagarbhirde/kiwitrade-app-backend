@@ -43,6 +43,50 @@ namespace eKiwiTradeApi.Logic
             return response;
         }
 
+        public async Task<Response<GroupEntity>> GetGroupLookupByCategoryId(int categoryId)
+        {
+            var response = new Response<GroupEntity>();
+            try
+            {
+                var lookupResult = await _lookupRepository.GetGroupLookupByCategoryId(categoryId);
+                if (lookupResult != null)
+                {
+                    response.Success = true;
+                    response.Datas = lookupResult;
+                }
+                return response;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Logic-LookupService-GetAllLookupAsync {0}", ex.Message);
+                response.Success = false;
+            }
+
+            return response;
+        }
+
+        public async Task<Response<TypeEntity>> GetTypeLookupByGroupAndCategoryId(int groupId, int categoryId)
+        {
+            var response = new Response<TypeEntity>();
+            try
+            {
+                var lookupResult = await _lookupRepository.GetTypeLookupByGroupAndCategoryId(groupId, categoryId);
+                if (lookupResult != null)
+                {
+                    response.Success = true;
+                    response.Datas = lookupResult;
+                }
+                return response;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Logic-LookupService-GetAllLookupAsync {0}", ex.Message);
+                response.Success = false;
+            }
+
+            return response;
+        }
+
         //public async Task<Response<string>> GetFieldLookupAsync(int fieldId)
         //{
         //    var response = new Response<string>();

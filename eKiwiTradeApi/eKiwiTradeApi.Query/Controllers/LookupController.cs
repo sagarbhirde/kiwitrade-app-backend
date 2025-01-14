@@ -21,6 +21,18 @@ namespace eKiwiTradeApi.Query.Controllers
             return Ok(await _lookupService.GetAllCategoryLookup().ConfigureAwait(false));
         }
 
+         [HttpGet("group")]
+    public async Task<IActionResult> GetGroupLookupByCategoryId(int categoryId)
+    {
+        return Ok(await _lookupService.GetGroupLookupByCategoryId(categoryId).ConfigureAwait(false));
+    }
+
+    [HttpGet("type")]
+    public async Task<IActionResult> GetTypeLookupByGroupAndCategoryId(int groupId, int categoryId)
+    {
+        return Ok(await _lookupService.GetTypeLookupByGroupAndCategoryId(groupId, categoryId).ConfigureAwait(false));
+    }
+
         //[HttpGet("field")]
         //public async Task<IActionResult> GetFieldLookup(int fieldId)
         //{
