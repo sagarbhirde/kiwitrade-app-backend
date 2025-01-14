@@ -18,13 +18,13 @@ namespace eKiwiTradeApi.Query.Controllers
         [HttpGet("category")]
         public async Task<IActionResult> GetAllCategoryLookup()
         {
-            return Ok(await _lookupService.GetAllLookupAsync().ConfigureAwait(false));
+            return Ok(await _lookupService.GetAllCategoryLookup().ConfigureAwait(false));
         }
 
-        [HttpGet("field")]
-        public async Task<IActionResult> GetFieldLookup(int fieldId)
-        {
-            return Ok(await _lookupService.GetFieldLookupAsync(fieldId).ConfigureAwait(false));
-        }
+        //[HttpGet("field")]
+        //public async Task<IActionResult> GetFieldLookup(int fieldId)
+        //{
+        //    return Ok(await _lookupService.GetFieldLookupAsync(fieldId).ConfigureAwait(false));
+        //}
     }
 }

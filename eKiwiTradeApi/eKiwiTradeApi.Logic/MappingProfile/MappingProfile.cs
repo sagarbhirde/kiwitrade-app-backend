@@ -8,7 +8,7 @@ namespace eKiwiTradeApi.Logic.MappingProfile
     {
         public MappingProfile()
         {
-            CreateMap<UserModel, User>().ReverseMap();
+            //CreateMap<UserModel, User>().ReverseMap();
 
         }
     }

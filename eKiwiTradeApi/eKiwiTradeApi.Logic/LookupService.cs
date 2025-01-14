@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using eKiwiTradeApi.Data.Entity;
 using eKiwiTradeApi.Logic.Helper;
 using eKiwiTradeApi.Logic.Interface;
 using Microsoft.Extensions.Logging;
@@ -20,16 +21,16 @@ namespace eKiwiTradeApi.Logic
 
 
         //TODO: Implement Cahse 
-        public async Task<Response<string>> GetAllLookupAsync()
+        public async Task<Response<Category>> GetAllCategoryLookup()
         {
-            var response = new Response<string>();
+            var response = new Response<Category>();
             try
             {
-                var lookupResult = await _lookupRepository.GetCategoryLookup();
-                if (!string.IsNullOrEmpty(lookupResult))
+                var lookupResult = await _lookupRepository.GetAllCategoryLookup();
+                if (lookupResult != null)
                 {
                     response.Success = true;
-                    response.Data = lookupResult;
+                    response.Datas = lookupResult;
                 }
                 return response;
             }
@@ -42,27 +43,27 @@ namespace eKiwiTradeApi.Logic
             return response;
         }
 
-        public async Task<Response<string>> GetFieldLookupAsync(int fieldId)
-        {
-            var response = new Response<string>();
-            try
-            {
-                var lookupResult = await _lookupRepository.GetFieldLookup(fieldId);
-                if (!string.IsNullOrEmpty(lookupResult))
-                {
-                    response.Success = true;
-                    response.Data = lookupResult;
-                }
-                return response;
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError("Logic-LookupService-GetAllLookupAsync {0}", ex.Message);
-                response.Success = false;
-            }
+        //public async Task<Response<string>> GetFieldLookupAsync(int fieldId)
+        //{
+        //    var response = new Response<string>();
+        //    try
+        //    {
+        //        var lookupResult = await _lookupRepository.GetFieldLookup(fieldId);
+        //        if (!string.IsNullOrEmpty(lookupResult))
+        //        {
+        //            response.Success = true;
+        //            response.Data = lookupResult;
+        //        }
+        //        return response;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        _logger.LogError("Logic-LookupService-GetAllLookupAsync {0}", ex.Message);
+        //        response.Success = false;
+        //    }
 
-            return response;
-        }
+        //    return response;
+        //}
 
     }
 }
