@@ -33,6 +33,26 @@ namespace eKiwiTradeApi.Query.Controllers
         return Ok(await _lookupService.GetTypeLookupByGroupAndCategoryId(groupId, categoryId).ConfigureAwait(false));
     }
 
+
+ [HttpGet("district")]
+        public async Task<IActionResult> GetAllDistrictLookup()
+        {
+            return Ok(await _lookupService.GetAllDistrictLookup().ConfigureAwait(false));
+        }
+
+        [HttpGet("city")]
+        public async Task<IActionResult> GetCityLookupByDistrictId(int districtId)
+        {
+            return Ok(await _lookupService.GetCityLookupByDistrictId(districtId).ConfigureAwait(false));
+        }
+
+        [HttpGet("suburb")]
+        public async Task<IActionResult> GetSuburbLookupByCityAndDistrictId(int cityId, int districtId)
+        {
+            return Ok(await _lookupService.GetSuburbLookupByCityAndDistrictId(cityId, districtId).ConfigureAwait(false));
+        }
+
+
         //[HttpGet("field")]
         //public async Task<IActionResult> GetFieldLookup(int fieldId)
         //{

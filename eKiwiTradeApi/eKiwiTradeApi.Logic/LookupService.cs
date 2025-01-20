@@ -87,27 +87,71 @@ namespace eKiwiTradeApi.Logic
             return response;
         }
 
-        //public async Task<Response<string>> GetFieldLookupAsync(int fieldId)
-        //{
-        //    var response = new Response<string>();
-        //    try
-        //    {
-        //        var lookupResult = await _lookupRepository.GetFieldLookup(fieldId);
-        //        if (!string.IsNullOrEmpty(lookupResult))
-        //        {
-        //            response.Success = true;
-        //            response.Data = lookupResult;
-        //        }
-        //        return response;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        _logger.LogError("Logic-LookupService-GetAllLookupAsync {0}", ex.Message);
-        //        response.Success = false;
-        //    }
+        public async Task<Response<District>> GetAllDistrictLookup()
+        {
+            var response = new Response<District>();
+            try
+            {
+                var lookupResult = await _lookupRepository.GetAllDistrictLookup();
+                if (lookupResult != null)
+                {
+                    response.Success = true;
+                    response.Datas = lookupResult;
+                }
+                return response;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Logic-LookupService-GetAllLookupAsync {0}", ex.Message);
+                response.Success = false;
+            }
 
-        //    return response;
-        //}
+            return response;
+        }
+
+        public async Task<Response<City>> GetCityLookupByDistrictId(int districtId)
+        {
+            var response = new Response<City>();
+            try
+            {
+                var lookupResult = await _lookupRepository.GetCityLookupByDistrictId(districtId);
+                if (lookupResult != null)
+                {
+                    response.Success = true;
+                    response.Datas = lookupResult;
+                }
+                return response;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Logic-LookupService-GetAllLookupAsync {0}", ex.Message);
+                response.Success = false;
+            }
+
+            return response;
+        }
+
+        public async Task<Response<Suburb>> GetSuburbLookupByCityAndDistrictId(int cityId, int districtId)
+        {
+            var response = new Response<Suburb>();
+            try
+            {
+                var lookupResult = await _lookupRepository.GetSuburbLookupByCityAndDistrictId(cityId, districtId);
+                if (lookupResult != null)
+                {
+                    response.Success = true;
+                    response.Datas = lookupResult;
+                }
+                return response;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Logic-LookupService-GetAllLookupAsync {0}", ex.Message);
+                response.Success = false;
+            }
+
+            return response;
+        }
 
     }
 }

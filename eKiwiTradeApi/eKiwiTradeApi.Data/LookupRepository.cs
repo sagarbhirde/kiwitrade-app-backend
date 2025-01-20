@@ -51,6 +51,47 @@ namespace eKiwiTradeApi.Data
             }
         }
 
+        public async Task<List<District>> GetAllDistrictLookup()
+        {
+            try
+            {
+                return await _context.Districts.ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Error in GetAllDistrictLookup: {Message}", ex.Message);
+                return new List<District>();
+            }
+        }
+
+        public async Task<List<City>> GetCityLookupByDistrictId(int districtId)
+        {
+            try
+            {
+                return await _context.Cities.Where(c => c.DistId == districtId).ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Error in GetCityLookupByDistrictId: {Message}", ex.Message);
+                return new List<City>();
+            }
+        }
+
+        public async Task<List<Suburb>> GetSuburbLookupByCityAndDistrictId(int cityId, int districtId)
+        {
+            try
+            {
+                return await _context.Suburbs.Where(s => s.CityId == cityId && s.DistId == districtId).ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Error in GetSuburbLookupByCityAndDistrictId: {Message}", ex.Message);
+                return new List<Suburb>();
+            }
+        }
+
+
+
 
 
         //public async Task<string> GetFieldLookup(int id)
